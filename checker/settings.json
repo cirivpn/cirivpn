@@ -1,0 +1,6 @@
+{
+  "timeout_s": 4,
+  "retries": 2,
+  "slow_ms": 400,
+  "telegram_notify": false
+}

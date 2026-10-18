@@ -1,0 +1,33 @@
+{
+ "demo": true,
+ "updated": "2026-10-18T07:36:11+00:00",
+ "nodes": [
+  {
+   "id": "pl-1",
+   "name": "Польша",
+   "country": "PL",
+   "status": "up",
+   "latency_ms": 38,
+   "uptime_24h": 100.0,
+   "bars": "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu"
+  },
+  {
+   "id": "nl-1",
+   "name": "Нидерланды",
+   "country": "NL",
+   "status": "up",
+   "latency_ms": 52,
+   "uptime_24h": 99.7,
+   "bars": "uuuuuuuuuuuuuuuuuuuuusuuuuuuuuuuuuuuuuuuuuuuuuuu"
+  },
+  {
+   "id": "fi-1",
+   "name": "Финляндия",
+   "country": "FI",
+   "status": "slow",
+   "latency_ms": 460,
+   "uptime_24h": 98.9,
+   "bars": "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuudsuuuuuuuuuuuuuuss"
+  }
+ ]
+}
