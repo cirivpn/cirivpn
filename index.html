@@ -219,8 +219,8 @@ footer a:hover { color: var(--fg); }
     <nav class="nav-links" aria-label="Разделы">
       <a class="hide-s" href="#connect">Подключение</a>
       <a class="hide-s" href="#faq">FAQ</a>
-      <a class="hide-s" href="#status">Статус</a>
-      <a class="btn small" href="tg://cirivpn_bot" target="_blank" rel="noopener">Открыть бота</a>
+      <a class="hide-s" href="#status">@cirivpn_status</a>
+      <a class="btn small" href="tg://resolve?domain=cirivpn_bot">Открыть бота</a>
     </nav>
   </header>
 
@@ -231,8 +231,8 @@ footer a:hover { color: var(--fg); }
         <h1>Ваш интернет — в <em>надёжных лапах</em></h1>
         <p class="lead">Цири ВПН помогает оставаться в сети без лишних ограничений. Подписку выдаёт Telegram-бот, а подключаетесь вы через удобное приложение.</p>
         <div class="cta-row">
-          <a class="btn" href="tg://cirivpn_bot" target="_blank" rel="noopener">Подключить Цири ВПН</a>
-          <a class="btn ghost" href="tg://cirivpn_news" target="_blank" rel="noopener">Канал с новостями</a>
+          <a class="btn" href="tg://resolve?domain=cirivpn_bot">Подключить Цири ВПН</a>
+          <a class="btn ghost" href="tg://resolve?domain=cirivpn_news">Канал с новостями</a>
         </div>
         <p class="bot">Бот: <b>@cirivpn_bot</b></p>
       </div>
@@ -329,7 +329,7 @@ footer a:hover { color: var(--fg); }
           <li>
             <div>
               <h3>Получите подписку Цири ВПН</h3>
-              <p>Откройте бота <a href="tg://cirivpn_bot" target="_blank" rel="noopener">@cirivpn_bot</a>, найдите раздел с вашей подпиской и скопируйте ссылку на подписку.</p>
+              <p>Откройте бота <a href="tg://resolve?domain=cirivpn_bot">@cirivpn_bot</a>, найдите раздел с вашей подпиской и скопируйте ссылку на подписку.</p>
             </div>
           </li>
           <li>
@@ -376,7 +376,7 @@ footer a:hover { color: var(--fg); }
           <li>
             <div>
               <h3>Получите подписку Цири ВПН</h3>
-              <p>Откройте бота <a href="tg://cirivpn_bot" target="_blank" rel="noopener">@cirivpn_bot</a>, найдите кнопку «Подключить устройство» рядом с вашей подпиской и скопируйте ссылку на подписку.</p>
+              <p>Откройте бота <a href="tg://resolve?domain=cirivpn_bot">@cirivpn_bot</a>, найдите кнопку «Подключить устройство» рядом с вашей подпиской и скопируйте ссылку на подписку.</p>
             </div>
           </li>
           <li>
@@ -401,7 +401,7 @@ footer a:hover { color: var(--fg); }
     <section id="status">
       <div class="sec-head">
         <h2>Доступность узлов</h2>
-        <p>Мы проверяем серверы каждые несколько минут. Адреса серверов не публикуются.</p>
+        <p>Мы регулярно проверяем серверы, обновление приходит примерно раз в 15–30 минут. Адреса серверов не публикуются.</p>
       </div>
       <p class="tip" id="status-banner" hidden></p>
       <div class="nodes" id="nodes" aria-live="polite">
@@ -413,7 +413,7 @@ footer a:hover { color: var(--fg); }
           <h2>Что-то не работает? Проверьте статус</h2>
           <p>В отдельном канале мы пишем о работе серверов и плановых работах.</p>
         </div>
-        <a class="btn" href="tg://cirivpn_status" target="_blank" rel="noopener">Канал статуса</a>
+        <a class="btn" href="tg://resolve?domain=cirivpn_status">Канал статуса</a>
       </div>
     </section>
   </main>
@@ -421,9 +421,9 @@ footer a:hover { color: var(--fg); }
   <footer>
     <span>Цири ВПН · Ваш интернет — в надёжных лапах</span>
     <div class="foot-links">
-      <a href="tg://cirivpn_bot" target="_blank" rel="noopener">Бот</a>
-      <a href="tg://cirivpn_news" target="_blank" rel="noopener">Новости</a>
-      <a href="tg://cirivpn_status" target="_blank" rel="noopener">Статус</a>
+      <a href="tg://resolve?domain=cirivpn_bot">@cirivpn_bot</a>
+      <a href="tg://resolve?domain=cirivpn_news">@cirivpn_news</a>
+      <a href="tg://resolve?domain=cirivpn_status">@cirivpn_status</a>
     </div>
   </footer>
 </div>
@@ -477,7 +477,7 @@ footer a:hover { color: var(--fg); }
   // Откуда страница берёт статус. Для GitHub Pages замените на адрес из README:
   // https://raw.githubusercontent.com/ВАШ_ЛОГИН/ИМЯ_РЕПО/status-data/status.json
   var STATUS_URL = "https://raw.githubusercontent.com/cirivpn/cirivpn/status-data/status.json";
-  var STALE_MIN = 30;
+  var STALE_MIN = 60;
 
   function el(tag, cls, text) {
     var e = document.createElement(tag);
