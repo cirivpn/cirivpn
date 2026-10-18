@@ -100,12 +100,20 @@ async def check_node(node, cfg):
 
 
 def build_bars(history, now):
-    bars = []
-    for i in range(BUCKETS):
-        lo = now - WINDOW + i * BUCKET_SEC
-        hi = lo + BUCKET_SEC
-        codes = [c for ts, c in history if lo <= ts < hi]
-        bars.append(max(codes, key=RANK.get) if codes else "n")
+    start = now - WINDOW
+    bars = ["n"] * BUCKETS
+    for ts, c in history:
+        i = min(BUCKETS - 1, int((ts - start) // BUCKET_SEC))
+        if i < 0:
+            continue
+        if bars[i] == "n" or RANK[c] > RANK[bars[i]]:
+            bars[i] = c
+    # GitHub Actions запускает расписание нерегулярно (паузы бывают 20-30 минут),
+    # поэтому одиночную пустую ячейку между двумя известными закрашиваем
+    # предыдущим статусом. Более длинные пропуски остаются серыми.
+    for i in range(1, BUCKETS - 1):
+        if bars[i] == "n" and bars[i - 1] != "n" and bars[i + 1] != "n":
+            bars[i] = bars[i - 1]
     return "".join(bars)
 
 
