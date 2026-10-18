@@ -1,0 +1,54 @@
+name: Проверка узлов
+
+on:
+  schedule:
+    # каждые 5 минут, со смещением от начала часа: так запуски задерживаются реже
+    - cron: "3-58/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: node-status
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Забрать код
+        uses: actions/checkout@v4
+
+      - name: Загрузить прошлые данные
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir data
+          cd data
+          git init -q
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          if git fetch -q --depth=1 origin status-data; then
+            git checkout -q FETCH_HEAD -- .
+          else
+            echo "Ветки status-data ещё нет, это первый запуск"
+          fi
+
+      - name: Проверить узлы
+        env:
+          CIRI_NODES: ${{ secrets.CIRI_NODES }}
+          CIRI_OUTPUT: ${{ github.workspace }}/data/status.json
+          CIRI_STATE: ${{ github.workspace }}/data/state.json
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+        run: python3 checker/checker.py checker/settings.json
+
+      - name: Опубликовать статус
+        working-directory: data
+        run: |
+          git add status.json state.json
+          git -c user.name="ciri-status-bot" -c user.email="ciri-status-bot@users.noreply.github.com" \
+            commit -q -m "Статус узлов"
+          # всегда один коммит, чтобы история ветки не росла
+          git push -q --force origin HEAD:status-data
