@@ -1,5 +1,10 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
 <title>Цири ВПН</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
 <style>
 /* Layout: left-aligned hero with a live route diagram (Вы → Цири → страна), then a plain three-step connect flow, device guides and a status band. */
@@ -35,6 +40,10 @@
 }
 
 * { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; }
+img, svg { max-width: 100%; }
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
@@ -60,29 +69,9 @@ p { margin: 0; }
 .nav-links { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; font-size: 15px; font-weight: 500; }
 .nav-links a { text-decoration: none; color: var(--muted); }
 .nav-links a:hover { color: var(--fg); }
+.nav-links a.btn, .nav-links a.btn:hover { color: var(--accent-ink); }
 
 .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 12px; font-weight: 600; font-size: 16px; text-decoration: none; border: 2px solid var(--accent); background: var(--accent); color: var(--accent-ink); transition: transform .15s ease; }
-.btn:hover { transform: translateY(-2px); }
-.btn.ghost { background: transparent; color: var(--fg); border-color: var(--line); }
-.btn.ghost:hover { border-color: var(--accent); }
-.btn.small { padding: 9px 16px; font-size: 14px; border-radius: 10px; }
-
-/* Hero */
-.hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 48px; align-items: center; padding-block: 48px 72px; }
-.hero h1 { font-size: clamp(34px, 5.4vw, 60px); margin-top: 16px; }
-.hero h1 em { font-style: normal; color: var(--accent); }
-.hero .lead { margin-top: 22px; font-size: 19px; color: var(--muted); max-width: 46ch; }
-.cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
-.bot { margin-top: 18px; font-family: var(--font-mono); font-size: 14px; color: var(--muted); }
-.bot b { color: var(--fg); font-weight: 500; }
-
-.route { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 20px 20px 22px; min-width: 0; }
-.route svg { width: 100%; height: auto; display: block; }
-.route-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 6px; }
-.route-now { font-family: var(--font-mono); font-size: 13px; color: var(--fg); }
-.picker { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
-.picker button { font: inherit; font-size: 15px; font-weight: 500; color: var(--fg); background: transparent; border: 1.5px solid var(--line); padding: 9px 16px; border-radius: 999px; cursor: pointer; }
-.picker button:hover { border-color: var(--accent); }
 .picker button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
 
 .edge { fill: none; stroke: var(--line); stroke-width: 3; stroke-linecap: round; }
@@ -90,8 +79,8 @@ p { margin: 0; }
 .edge.base { stroke: var(--accent); stroke-dasharray: 2 9; animation: flow 1.1s linear infinite; }
 @keyframes flow { to { stroke-dashoffset: -22; } }
 .n-box { fill: var(--bg); stroke: var(--line); stroke-width: 1.5; }
-.n-txt { fill: var(--fg); font-family: var(--font-mono); font-size: 16px; text-anchor: middle; dominant-baseline: middle; }
-.n-sub { fill: var(--muted); font-family: var(--font-body); font-size: 12px; text-anchor: middle; }
+.n-txt { fill: var(--fg); font-family: var(--font-mono); font-size: 19px; text-anchor: middle; dominant-baseline: middle; }
+.n-sub { fill: var(--muted); font-family: var(--font-body); font-size: 15px; text-anchor: middle; }
 .hub-disc { fill: var(--accent); }
 .hub-paw { color: var(--accent-ink); }
 .country.is-active .n-box { fill: var(--accent); stroke: var(--accent); }
@@ -200,6 +189,8 @@ footer a:hover { color: var(--fg); }
   .btn, html { transition: none; scroll-behavior: auto; }
 }
 </style>
+</head>
+<body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
@@ -250,14 +241,14 @@ footer a:hover { color: var(--fg); }
 
           <g>
             <circle cx="60" cy="165" r="34" class="n-box"/>
-            <text x="60" y="166" class="n-txt" style="font-size:14px">Вы</text>
-            <text x="60" y="222" class="n-sub">ваше устройство</text>
+            <text x="60" y="166" class="n-txt" style="font-size:17px">Вы</text>
+            <text x="60" y="222" class="n-sub">устройство</text>
           </g>
 
           <g>
             <circle cx="270" cy="165" r="50" class="hub-disc"/>
             <svg x="244" y="139" width="52" height="52" class="hub-paw"><use href="#paw"/></svg>
-            <text x="270" y="240" class="n-sub" style="font-size:13px">Цири ВПН</text>
+            <text x="270" y="240" class="n-sub" style="font-size:16px">Цири ВПН</text>
           </g>
 
           <g class="country is-active" data-c="pl" tabindex="-1">
@@ -360,201 +351,4 @@ footer a:hover { color: var(--fg); }
       </div>
 
       <div class="panel" id="panel-happ" role="tabpanel" aria-labelledby="tab-happ" hidden>
-        <p class="panel-lead">Happ работает на iOS и на Android. Это удобное приложение для VPN-подписок.</p>
-        <ol class="how">
-          <li>
-            <div>
-              <h3>Установите Happ</h3>
-              <p>Скачайте приложение из магазина вашей системы. Для Android также доступен apk-файл.</p>
-              <p class="links">
-                <a class="btn small ghost" href="https://apps.apple.com/us/app/happ-proxy-utility/id6504287215" target="_blank" rel="noopener">App Store</a>
-                <a class="btn small ghost" href="https://play.google.com/store/apps/details?id=com.happproxy&pcampaignid=web_share" target="_blank" rel="noopener">Google Play</a>
-                <a class="btn small ghost" href="https://github.com/Happ-proxy/happ-android/releases/latest/download/Happ.apk" target="_blank" rel="noopener">APK для Android</a>
-              </p>
-            </div>
-          </li>
-          <li>
-            <div>
-              <h3>Получите подписку Цири ВПН</h3>
-              <p>Откройте бота <a href="tg://resolve?domain=cirivpn_bot">@cirivpn_bot</a>, найдите кнопку «Подключить устройство» рядом с вашей подпиской и скопируйте ссылку на подписку.</p>
-            </div>
-          </li>
-          <li>
-            <div>
-              <h3>Импортируйте подписку в Happ</h3>
-              <p><b>Способ 1.</b> Откройте Happ и нажмите кнопку «Из буфера» внизу.</p>
-              <p><b>Способ 2.</b> Нажмите «+» в правом верхнем углу и выберите «Вставить из буфера обмена».</p>
-              <p>После этого Happ загрузит конфигурацию и доступные локации.</p>
-            </div>
-          </li>
-          <li>
-            <div>
-              <h3>Подключитесь</h3>
-              <p>Выберите нужную локацию, например Польшу или Францию, и нажмите кнопку подключения. При первом подключении система попросит разрешение на создание VPN-соединения. Разрешите его, и всё готово.</p>
-            </div>
-          </li>
-        </ol>
-        <p class="tip">Если вы не видите актуальные настройки или локации, обновите подписку в Happ. Правила и конфигурация загружаются вместе с подпиской Цири ВПН.</p>
-      </div>
-    </section>
-
-    <section id="status">
-      <div class="sec-head">
-        <h2>Доступность узлов</h2>
-        <p>Мы регулярно проверяем серверы, обновление приходит примерно раз в 15–30 минут. Адреса серверов не публикуются.</p>
-      </div>
-      <p class="tip" id="status-banner" hidden></p>
-      <div class="nodes" id="nodes" aria-live="polite">
-        <p class="node-empty">Загружаем статус узлов…</p>
-      </div>
-      <p class="label upd" id="updated"></p>
-      <div class="status">
-        <div>
-          <h2>Что-то не работает? Проверьте статус</h2>
-          <p>В отдельном канале мы пишем о работе серверов и плановых работах.</p>
-        </div>
-        <a class="btn" href="tg://resolve?domain=cirivpn_status">Канал статуса</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <span>Цири ВПН · Ваш интернет — в надёжных лапах</span>
-    <div class="foot-links">
-      <a href="tg://resolve?domain=cirivpn_bot">@cirivpn_bot</a>
-      <a href="tg://resolve?domain=cirivpn_news">@cirivpn_news</a>
-      <a href="tg://resolve?domain=cirivpn_status">@cirivpn_status</a>
-    </div>
-  </footer>
-</div>
-
-<script>
-(function () {
-  var names = { pl: "Польша", nl: "Нидерланды", fi: "Финляндия" };
-  var out = document.getElementById("route-now");
-  function select(c) {
-    ["pl", "nl", "fi"].forEach(function (k) {
-      var on = k === c;
-      document.getElementById("e-" + k).classList.toggle("on", on);
-      document.getElementById("b-" + k).setAttribute("aria-pressed", on ? "true" : "false");
-      var g = document.querySelector('.country[data-c="' + k + '"]');
-      if (g) g.classList.toggle("is-active", on);
-    });
-    out.textContent = "Вы → Цири → " + names[c];
-  }
-  document.querySelectorAll("[data-c]").forEach(function (el) {
-    el.addEventListener("click", function () { select(el.getAttribute("data-c")); });
-  });
-  select("pl");
-})();
-
-(function () {
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tabs [role="tab"]'));
-  function show(tab) {
-    tabs.forEach(function (t) {
-      var on = t === tab;
-      t.setAttribute("aria-selected", on ? "true" : "false");
-      t.tabIndex = on ? 0 : -1;
-      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
-    });
-  }
-  tabs.forEach(function (t, i) {
-    t.addEventListener("click", function () { show(t); });
-    t.addEventListener("keydown", function (e) {
-      var n = null;
-      if (e.key === "ArrowRight") n = tabs[(i + 1) % tabs.length];
-      if (e.key === "ArrowLeft") n = tabs[(i - 1 + tabs.length) % tabs.length];
-      if (n) { show(n); n.focus(); e.preventDefault(); }
-    });
-  });
-})();
-
-(function () {
-  var box = document.getElementById("nodes");
-  var banner = document.getElementById("status-banner");
-  var upd = document.getElementById("updated");
-  var LABEL = { up: "Работает", slow: "Медленно", down: "Недоступен" };
-  // Откуда страница берёт статус. Для GitHub Pages замените на адрес из README:
-  // https://raw.githubusercontent.com/ВАШ_ЛОГИН/ИМЯ_РЕПО/status-data/status.json
-  var STATUS_URL = "https://raw.githubusercontent.com/cirivpn/cirivpn/status-data/status.json";
-  var STALE_MIN = 60;
-
-  function el(tag, cls, text) {
-    var e = document.createElement(tag);
-    if (cls) e.className = cls;
-    if (text != null) e.textContent = text;
-    return e;
-  }
-  function showBanner(text) {
-    banner.textContent = text || "";
-    banner.hidden = !text;
-  }
-  function fmtPct(v) {
-    return v == null ? "—" : v.toLocaleString("ru-RU", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "% за 24 ч";
-  }
-  function render(data) {
-    var nodes = (data && data.nodes) || [];
-    box.textContent = "";
-    if (!nodes.length) {
-      box.appendChild(el("p", "node-empty", "Пока нет данных по узлам."));
-      return;
-    }
-    nodes.forEach(function (n) {
-      var row = el("div", "node");
-      var name = el("div", "node-name");
-      if (n.country) name.appendChild(el("span", "cc", n.country));
-      name.appendChild(el("span", null, n.name));
-      row.appendChild(name);
-
-      var st = LABEL[n.status] ? n.status : "down";
-      var pill = el("span", "pill " + st);
-      pill.appendChild(el("i"));
-      pill.appendChild(document.createTextNode(LABEL[st]));
-      row.appendChild(pill);
-
-      row.appendChild(el("span", "lat", n.latency_ms != null ? n.latency_ms + " мс" : "нет ответа"));
-      row.appendChild(el("span", "upt", fmtPct(n.uptime_24h)));
-
-      var bars = el("div", "bars");
-      bars.setAttribute("role", "img");
-      bars.setAttribute("aria-label", n.name + ": доступность за последние 24 часа, " + fmtPct(n.uptime_24h));
-      String(n.bars || "").split("").forEach(function (c) {
-        var b = document.createElement("span");
-        if (c === "u" || c === "s" || c === "d") b.className = c;
-        bars.appendChild(b);
-      });
-      row.appendChild(bars);
-      var scale = el("div", "bars-scale");
-      scale.appendChild(el("span", null, "24 ч назад"));
-      scale.appendChild(el("span", null, "сейчас"));
-      row.appendChild(scale);
-      box.appendChild(row);
-    });
-
-    var d = data.updated ? new Date(data.updated) : null;
-    if (d && !isNaN(d)) {
-      upd.textContent = "Обновлено " + d.toLocaleString("ru-RU", { day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" });
-    }
-    if (data.demo) {
-      showBanner("Это демо-данные для примера. Реальный статус появится, когда заработает скрипт проверки.");
-    } else if (d && (Date.now() - d.getTime()) > STALE_MIN * 60000) {
-      showBanner("Данные не обновлялись больше " + STALE_MIN + " минут. Актуальную информацию смотрите в канале статуса.");
-    } else {
-      showBanner("");
-    }
-  }
-  function load() {
-    fetch(STATUS_URL, { cache: "no-store" })
-      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-      .then(render)
-      .catch(function () {
-        if (!box.querySelector(".node")) {
-          box.textContent = "";
-          box.appendChild(el("p", "node-empty", "Не удалось загрузить статус. Загляните в канал статуса."));
-        }
-      });
-  }
-  load();
-  setInterval(load, 60000);
-})();
-</script>
+        <p class="panel-lead">Happ работает
